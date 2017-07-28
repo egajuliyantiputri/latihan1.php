@@ -42,3 +42,41 @@ Route::get('/tes/{nama}', function () {
 	$a="";
 	return 'ini adalah halaman jhon'.$a;
 });
+
+Route::get('testmodel', function(){
+	$a = App\Post::all();
+	return $a;
+});
+
+Route::get('testmodel2', function(){
+	$a = App\Post::where('title','like','%Haruskah%')->get();
+	return $a;
+});
+
+Route::get('testmodel3', function(){
+	$Post = App\Post::find(1);
+	$Post->title="ciri keluarga sakinah";
+	$Post->save();
+	return $Post;
+});
+
+Route::get('testmodel4', function(){
+	$Post = App\Post::find(1);
+	$Post->delete();
+});
+
+Route::get('testmodel5', function(){
+	$Post = new App\Post;
+	$Post->title = "7 amalan pembuka jodoh";
+	$Post->content = "aholat malam,sedekah,pupasa sunnah,silahturahmi,senyum,doa,taubat";
+	$Post->save();
+	return $Post;
+});
+
+Route::get('/about', function(){
+	return view ('about');
+});
+
+Route::get('cektampilan', function (){
+	return view('layouts.master');
+});
